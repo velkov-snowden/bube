@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>За Љубица ♡</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
+  :root { --cream:#fff3e6; --gold:#f5cda2; --soft:#e8bda5; }
+  * { box-sizing:border-box }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--cream);
+    background:radial-gradient(ellipse at 50% 15%, #59404a 0%, #211c2c 48%, #10121c 100%);
+    font-family:'Cormorant Garamond', Georgia, serif;
+  }
+  .stars,.hearts { position:fixed; inset:0; pointer-events:none; overflow:hidden; }
+  .star { position:absolute; width:2px;height:2px;border-radius:50%;background:#fff2d7;opacity:.6;animation:twinkle 3s infinite ease-in-out; }
+  @keyframes twinkle { 0%,100%{opacity:.2;transform:scale(.7)} 50%{opacity:.9;transform:scale(1.4)} }
+  .wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:35px 18px; position:relative; }
+  .card { width:min(720px,100%); text-align:center; padding:clamp(25px,6vw,58px) 22px; border:1px solid rgba(245,205,162,.22); border-radius:28px; background:rgba(20,18,29,.38); backdrop-filter:blur(8px); box-shadow:0 25px 80px #0005; }
+  .top { letter-spacing:.35em; text-transform:lowercase; color:var(--gold); font-size:14px; margin-bottom:22px; animation:fade 1.2s both; }
+  h1 { font-weight:500; font-size:clamp(36px,8vw,68px); line-height:1.05; margin:0; animation:rise 1.2s both; }
+  h1 span { display:block; font-family:'Great Vibes',cursive; font-size:clamp(48px,11vw,90px); color:#f3c9ad; margin-top:8px; }
+  .line { width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:25px auto; }
+  .intro { max-width:520px; margin:0 auto 25px; font-size:clamp(18px,4vw,23px); line-height:1.55; color:#f7e8dd; animation:fade 1.8s both; }
+  button { cursor:pointer; border:1px solid var(--gold); color:var(--cream); background:linear-gradient(135deg,#7c4c52aa,#382b3aaa); border-radius:999px; padding:15px 30px; font:500 20px 'Cormorant Garamond',serif; letter-spacing:.04em; box-shadow:0 0 25px #e6ad7b20; transition:transform .25s,box-shadow .25s; }
+  button:hover { transform:translateY(-3px);box-shadow:0 0 30px #e6ad7b55; }
+  button:active { transform:scale(.97); }
+  .message { display:none; max-width:550px; margin:28px auto 0; opacity:0; transform:translateY(12px); }
+  .message.show { display:block; animation:reveal .9s forwards; }
+  .message p { font-size:clamp(19px,4vw,25px); line-height:1.6; margin:12px 0; }
+  .signature { font-family:'Great Vibes',cursive; color:var(--gold); font-size:35px!important; margin-top:22px!important; }
+  .heart { position:absolute; bottom:-35px; color:#f4c5bd; opacity:0; animation:float 8s linear forwards; text-shadow:0 0 12px #f2a6ad88; }
+  @keyframes float { 0%{transform:translateY(0) rotate(0);opacity:0} 10%{opacity:.7} 90%{opacity:.55} 100%{transform:translateY(-110vh) rotate(25deg);opacity:0} }
+  @keyframes rise { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+  @keyframes fade { from{opacity:0}to{opacity:1} }
+  @keyframes reveal { to{opacity:1;transform:translateY(0)} }
+  .footer { margin-top:35px;color:#c9a99d;font-size:14px;letter-spacing:.08em; }
+  @media (prefers-reduced-motion:reduce) { *,*::before,*::after{animation-duration:.01ms!important;transition:none!important} }
+
+  .love-scene { position:relative; isolation:isolate; overflow:hidden; padding:28px 16px 18px; margin-top:8px; border-radius:24px; background:linear-gradient(145deg,rgba(116,69,77,.32),rgba(35,27,43,.72)),radial-gradient(ellipse at 50% 0%,#b77b7750,transparent 65%); border:1px solid #f3c9ad30; }
+  .love-scene::before { content:"";position:absolute;inset:0;z-index:-1;opacity:.35;background:radial-gradient(circle at 20% 25%,#f9d9b855 0 1px,transparent 2px),radial-gradient(circle at 80% 65%,#f9d9b855 0 1px,transparent 2px);background-size:45px 45px,65px 65px; }
+  .scene-kicker { color:#eac5ad;letter-spacing:.22em;text-transform:lowercase;font-size:13px;animation:softIn 1s both; }
+  .love-title { font-weight:400;font-size:clamp(30px,7vw,52px);line-height:1.1;margin:15px 0;color:#fff0e4;animation:titleBloom 1.1s .15s both; }
+  .love-title span { display:block;font-family:'Great Vibes',cursive;color:#f3c9ad;font-size:clamp(52px,12vw,82px);margin-top:4px;text-shadow:0 0 24px #f3c9ad40; }
+  .love-divider { color:#e9bda5;letter-spacing:.35em;margin:17px 0 22px;animation:softIn 1s .45s both; }
+  .love-text { position:relative;font-size:clamp(18px,4vw,23px)!important;line-height:1.55!important;color:#f7e8dd;margin:18px auto!important;max-width:490px;opacity:0;animation:wordRise .9s forwards; }
+  .text-one{animation-delay:.45s}.text-two{animation-delay:.9s}.text-three{animation-delay:1.35s}.text-four{animation-delay:1.8s}
+  .love-scene .signature { animation:softIn 1.2s 2.25s both;color:#f4c9ad!important; }
+  .glow-orb { position:absolute;width:160px;height:160px;border-radius:50%;filter:blur(45px);opacity:.16;z-index:-1;animation:orbDrift 8s ease-in-out infinite alternate; }
+  .orb-one{background:#e8a59a;top:-50px;left:-45px}.orb-two{background:#d5a9ce;right:-55px;bottom:-30px;animation-delay:2s}
+  @keyframes wordRise { from{opacity:0;transform:translateY(22px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)} }
+  @keyframes titleBloom { from{opacity:0;transform:scale(.92);filter:blur(8px)}to{opacity:1;transform:scale(1);filter:blur(0)} }
+  @keyframes softIn { from{opacity:0}to{opacity:1} }
+  @keyframes orbDrift {from{transform:translate(0,0) scale(.9)}to{transform:translate(25px,-18px) scale(1.15)}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div><div class="hearts" id="hearts"></div>
+<main class="wrap">
+  <section class="card">
+    <div class="top">за тебе!❤️</div>
+    <h1>Среќен роденден,<span>љубов моја!</span></h1>
+    <div class="line"></div>
+    <p class="intro">Денес е посебен ден, нека ова мало изненадување ти даде насмевка. За нас ❤️</p>
+    <button id="openBtn" type="button">♡ Стисни ме ♡</button>
+    <div class="message" id="message" aria-live="polite">
+      <div class="love-scene">
+        <div class="glow-orb orb-one"></div><div class="glow-orb orb-two"></div>
+        <div class="scene-kicker">Од личноста која ја мотивира да уче!</div>
+        <h2 class="love-title">Те сакам <span>бескрајно</span></h2>
+        <div class="love-divider">♡ ✧ ♡</div>
+        <p class="love-text text-one">Бубе, ти си ми насмевката секое утро, ти си ми подршката во животот.</p>
+        <p class="love-text text-two">Со тебе и обичните моменти стануваат спомени што сакам да ги чувам засекогаш.</p>
+        <p class="love-text text-three">Ти посакувам љубов што никогаш не згаснува, радост што секогаш се враќа и безброј причини за насмевка.</p>
+        <p class="love-text text-four">Сакам да наздравиме за тебе, за нас и за моментот кој го красиш. Поминавме многу тешки моменти, моето извини го имаш засекогаш!</p>
+        <p class="signature">Ти си моето омилено „засекогаш“. ♡</p>
+      </div>
+    </div>
+    <div class="footer">со љубов и почит за тебе!</div>
+  </section>
+</main>
+<script>
+  // Нежни светулки/ѕвезди во позадината
+  const stars = document.getElementById('stars');
+  for (let i=0; i<65; i++) {
+    const s=document.createElement('span'); s.className='star';
+    s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*4)+'s'; s.style.animationDuration=(2+Math.random()*4)+'s';
+    stars.appendChild(s);
+  }
+  // Плутачки срца
+  function makeHeart(){
+    const h=document.createElement('span'); h.className='heart'; h.textContent=['♡','♥','✧'][Math.floor(Math.random()*3)];
+    h.style.left=Math.random()*100+'%'; h.style.fontSize=(14+Math.random()*20)+'px';
+    h.style.animationDuration=(6+Math.random()*5)+'s'; document.getElementById('hearts').appendChild(h);
+    setTimeout(()=>h.remove(),11000);
+  }
+  setInterval(makeHeart,700);
+  // Копчето ја открива љубовната порака
+  document.getElementById('openBtn').addEventListener('click',()=>{
+    const msg=document.getElementById('message');
+    msg.classList.add('show');
+    document.getElementById('openBtn').textContent='♡ Секогаш твој ♡';
+    setTimeout(()=>msg.scrollIntoView({behavior:'smooth',block:'center'}),120);
+    document.getElementById('openBtn').disabled=true;
+    for(let i=0;i<14;i++) setTimeout(makeHeart,i*90);
+  });
+</script>
+</body>
+</html>
